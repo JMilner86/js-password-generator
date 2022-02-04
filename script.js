@@ -3,11 +3,41 @@ let numArray = ['0','1','2','3','4','5','6','7','8','9'];
 let capsArray = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
 let lowersArray = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
 let specialChars = ['!','@','#','$','%','^','&','*','<','>','?'];
+let emptyArray = [];
 
+const forLoop = (Array) => {
+  for (i = 0; i < Array.length; i++) {
+    console.log(forLoop())
+  }
+  
+}
+forLoop(numArray);
 
 const randomItems = (Array) => {
   return Array[Math.floor(Math.random() * Array.length)]
-};   const charLoop = () => {
+};   
+
+
+
+
+const generatePassword = () => {
+    let passwordLength = window.prompt("What is your desired password length? (8-128 characters). Please choose a number.")
+    
+     if (isNaN(passwordLength)) {
+      window.alert ("That is not a valid number. Please enter a number between 8-128")
+     return generatePassword();
+    }
+    
+    else if (passwordLength < 8 || passwordLength > 128) {
+      window.alert("That is not a valid number. Please enter a number between 8-128")
+     return generatePassword();
+    };
+
+
+
+
+};
+const charLoop = () => {
     let charChoice = {
       capsLetters: window.confirm("Confirm to add capital letters to your password"),
       lowersLetters: window.confirm("Confirm to add Lower Case letters to your password"),
@@ -17,42 +47,31 @@ const randomItems = (Array) => {
    
     if (charChoice.capsLetters) {
       let tempVar =  randomItems(capsArray)
-        console.log(tempVar)
+      window.alert("Confirmed capital letters!")
+      emptyArray.push(tempVar)
     }
     if (charChoice.lowersLetters) {
       let tempVar = randomItems(lowersArray)
-      console.log(tempVar)
+      window.alert("Confirmed lowercase letters!")
+      emptyArray.push(tempVar)
     }
     if (charChoice.includeNumbers) {
       let tempVar = randomItems(numArray) 
-      console.log(tempVar)
+      window.alert("Confirmed numbers!")
+      emptyArray.push(tempVar)
     }
     if(charChoice.specials) {
       let tempVar = randomItems(specialChars)
-      console.log(tempVar)
+      window.alert("Confirmed special characters!")
+      emptyArray.push(tempVar)
     }
     else {
       window.alert("You must choose at least one Character option!")
       charLoop();
     }
 }
-const generatePassword = () => {
-    let passwordLength = window.prompt("What is your desired password length? (8-128 characters). Please choose a number.")
-    
-     if (isNaN(passwordLength)) {
-      window.alert ("That is not a valid number. Please enter a number between 8-128")
-      generatePassword();
-    }
-    
-    else if (passwordLength < 8 || passwordLength > 128) {
-      window.alert("That is not a valid number. Please enter a number between 8-128")
-      generatePassword();
-    };
 
-};
-
-
-
+console.log(emptyArray)
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
